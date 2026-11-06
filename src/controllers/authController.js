@@ -10,11 +10,11 @@ export const login = async (req, res, next) => {
     const validatedData = loginSchema.parse(req.body);
     const { user, tokens } = await loginUser(validatedData.email, validatedData.password);
 
-    // Stockage sécurisé du Refresh Token en cookie HTTP-Only
+    // Stockage sécurisé du Refresh Token en cookie HTTP-Only (compatible cross-site Render / Localhost / Vercel)
     res.cookie("refreshToken", tokens.refreshToken, {
       httpOnly: true,
-      secure: ENV.NODE_ENV === "production",
-      sameSite: ENV.NODE_ENV === "production" ? "strict" : "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 jours
     });
 
@@ -39,8 +39,8 @@ export const refresh = async (req, res, next) => {
 
     res.cookie("refreshToken", tokens.refreshToken, {
       httpOnly: true,
-      secure: ENV.NODE_ENV === "production",
-      sameSite: ENV.NODE_ENV === "production" ? "strict" : "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
