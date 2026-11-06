@@ -9,6 +9,9 @@ import apiRouter from "./routes/index.js";
 
 const app = express();
 
+// Configuration du reverse proxy (Render, Cloudflare, etc.) pour identifier la véritable IP client
+app.set("trust proxy", 1);
+
 // Configuration des en-têtes HTTP de sécurité
 app.use(helmet());
 
