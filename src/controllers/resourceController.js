@@ -1,9 +1,23 @@
 import Resource from "../models/Resource.js";
+import { seedInitialData } from "../services/seedService.js";
 
 // Liste toutes les ressources officielles (Public / Admin)
 export const listResources = async (req, res) => {
   try {
-    const resources = await Resource.find({ isActive: true }).sort({ order: 1, createdAt: -1 });
+    const { category } = req.query;
+
+    // Si la collection est vide, amorcer avec les documents officiels par défaut
+    const totalCount = await Resource.countDocuments();
+    if (totalCount === 0) {
+      await seedInitialData();
+    }
+
+    const filter = { isActive: true };
+    if (category) {
+      filter.category = category;
+    }
+
+    const resources = await Resource.find(filter).sort({ order: 1, createdAt: -1 });
     res.status(200).json({ success: true, count: resources.length, data: resources });
   } catch (error) {
     res.status(500).json({ success: false, message: "Erreur lors de la récupération des ressources.", error: error.message });
@@ -25,7 +39,7 @@ export const createResource = async (req, res) => {
       descriptionEn: descriptionEn || "",
       fileUrl,
       fileSize: fileSize || "PDF",
-      category: category || "Officiel",
+      category: category || "guide",
       order: order !== undefined ? Number(order) : 0,
       isActive: true,
     });
@@ -63,4 +77,3 @@ export const deleteResource = async (req, res) => {
     res.status(500).json({ success: false, message: "Échec de suppression.", error: error.message });
   }
 };
-

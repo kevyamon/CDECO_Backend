@@ -2,6 +2,7 @@ import app from "./app.js";
 import { connectDB } from "./config/db.js";
 import { ENV } from "./config/env.js";
 import { bootstrapAdmin } from "./services/authService.js";
+import { seedInitialData } from "./services/seedService.js";
 
 /**
  * Démarrage du serveur et amorçage des services
@@ -13,6 +14,9 @@ const startServer = async () => {
 
     // Amorçage automatique du compte administrateur si nécessaire
     await bootstrapAdmin();
+
+    // Amorçage automatique des données officielles (Membres, Ressources, Événements) si base vide
+    await seedInitialData();
 
     const server = app.listen(ENV.PORT, () => {
       console.log("==================================================================");

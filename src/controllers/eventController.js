@@ -1,9 +1,17 @@
 import Event from "../models/Event.js";
+import { seedInitialData } from "../services/seedService.js";
 
 // Liste tous les événements (filtrable par category)
 export const listEvents = async (req, res) => {
   try {
     const { category, all } = req.query;
+
+    // Si la collection est vide, amorcer avec les événements officiels
+    const totalCount = await Event.countDocuments();
+    if (totalCount === 0) {
+      await seedInitialData();
+    }
+
     const filter = {};
     if (category) filter.category = category;
     if (all !== "true") filter.isActive = true;
