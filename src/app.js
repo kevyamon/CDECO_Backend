@@ -20,6 +20,7 @@ const allowedOrigins = [
   ENV.CLIENT_URL,
   process.env.FRONTEND_URL,
   process.env.CLIENT_URL,
+  "https://cdeco.vercel.app",
   "http://localhost:5173",
   "http://localhost:3000",
   "http://127.0.0.1:5173",
@@ -28,8 +29,12 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Autoriser les requêtes sans origine (comme Postman ou curl) en dev
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Autoriser les requêtes sans origine (Postman, curl, SSR) ou autorisées
+      if (
+        !origin ||
+        allowedOrigins.includes(origin) ||
+        origin.endsWith(".vercel.app")
+      ) {
         callback(null, true);
       } else {
         callback(new Error(`Origine CORS non autorisée : ${origin}`));
