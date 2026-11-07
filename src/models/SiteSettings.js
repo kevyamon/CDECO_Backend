@@ -59,6 +59,52 @@ const siteSettingsSchema = new mongoose.Schema(
       default: "https://cdeco.org",
       trim: true,
     },
+    // KAMPUS CDECO Configuration
+    kampusDirectorName: {
+      type: String,
+      default: "Steve Patrick MBOUKOU",
+      trim: true,
+    },
+    kampusDirectorTitle: {
+      type: String,
+      default: "Directeur KAMPUS CDECO",
+      trim: true,
+    },
+    kampusDirectorTitleEn: {
+      type: String,
+      default: "Director of KAMPUS CDECO",
+      trim: true,
+    },
+    kampusDirectorBio: {
+      type: String,
+      default: "Chargé de l'entrepreneuriat des jeunes et du développement des compétences pour la nouvelle génération congolaise.",
+      trim: true,
+    },
+    kampusDirectorBioEn: {
+      type: String,
+      default: "In charge of youth entrepreneurship and professional skill-building for the new Congolese generation.",
+      trim: true,
+    },
+    kampusDirectorImage: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+    kampusAddress: {
+      type: String,
+      default: "n°40 Av. des 3 martyrs, Moungali Brazzaville",
+      trim: true,
+    },
+    kampusEmail: {
+      type: String,
+      default: "contact@cdeco.com",
+      trim: true,
+    },
+    kampusWebsite: {
+      type: String,
+      default: "www.cdeco.com",
+      trim: true,
+    },
   },
   {
     timestamps: true,

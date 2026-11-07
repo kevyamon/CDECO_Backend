@@ -12,6 +12,15 @@ const DEFAULT_SETTINGS = {
   linkedin: "https://www.linkedin.com/company/chambre-de-diplomatie-economique-du-congo/",
   twitter: "https://twitter.com/cdeco",
   website: "https://cdeco.org",
+  kampusDirectorName: "Steve Patrick MBOUKOU",
+  kampusDirectorTitle: "Directeur KAMPUS CDECO",
+  kampusDirectorTitleEn: "Director of KAMPUS CDECO",
+  kampusDirectorBio: "Chargé de l'entrepreneuriat des jeunes et du développement des compétences pour la nouvelle génération congolaise.",
+  kampusDirectorBioEn: "In charge of youth entrepreneurship and professional skill-building for the new Congolese generation.",
+  kampusDirectorImage: "",
+  kampusAddress: "n°40 Av. des 3 martyrs, Moungali Brazzaville",
+  kampusEmail: "contact@cdeco.com",
+  kampusWebsite: "www.cdeco.com",
 };
 
 // Récupère les paramètres de contact (Public)

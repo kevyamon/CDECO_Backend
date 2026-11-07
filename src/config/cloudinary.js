@@ -25,7 +25,6 @@ export const uploadBufferToCloudinary = (buffer, folder = "cdeco", publicId = un
     const options = {
       folder,
       resource_type: "auto",
-      transformation: [{ quality: "auto", fetch_format: "auto" }],
     };
 
     if (publicId) {
