@@ -15,7 +15,7 @@ const siteMediaSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      enum: ["hero", "leadership", "gallery", "partner", "video", "section", "general"],
+      enum: ["hero", "leadership", "gallery", "partner", "video", "section", "general", "events", "kampus", "resources"],
       default: "general",
       index: true,
     },
