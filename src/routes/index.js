@@ -3,6 +3,8 @@ import authRoutes from "./authRoutes.js";
 import membershipRoutes from "./membershipRoutes.js";
 import contactRoutes from "./contactRoutes.js";
 import mediaRoutes from "./mediaRoutes.js";
+import eventRoutes from "./eventRoutes.js";
+import settingsRoutes from "./settingsRoutes.js";
 
 const apiRouter = express.Router();
 
@@ -21,6 +23,8 @@ apiRouter.use("/auth", authRoutes);
 apiRouter.use("/memberships", membershipRoutes);
 apiRouter.use("/contact", contactRoutes);
 apiRouter.use("/media", mediaRoutes);
+apiRouter.use("/events", eventRoutes);
+apiRouter.use("/settings", settingsRoutes);
 
 export default apiRouter;
 
